@@ -5,19 +5,21 @@ pipeline {
             steps {
                 echo 'Building the application using Maven to compile and package the code.'
             }
-        }
+        }      
         stage('Unit and Integration Tests') {
             steps {
                 echo 'Running unit tests with JUnit and integration tests with TestNG.'
-                
             }
             post {
                 always {
                     emailext(
                         subject: "running test stage build: ${env.BUILD_NUMBER}",
-                        body:" The Unit and Integration Tests stage finished with status: ${currentBuild.currentResult}.\n",
-                        to:'s223391013@deakin.edu.au',
-                        attachlog: true
+                        body: "The Unit and Integration Tests stage finished with status: ${currentBuild.currentResult}.\n",
+                        to: 's223391013@deakin.edu.au',
+                        attachLog: true
+                    )
+                }
+            }
         }
         stage('Code Analysis') {
             steps {
