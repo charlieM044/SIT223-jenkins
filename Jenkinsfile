@@ -15,7 +15,7 @@ pipeline {
                 always {
                     emailext(
                         subject: "running test stage build: ${env.BUILD_NUMBER}",
-                        body: "The Unit and Integration Tests stage finished with status: ${currentBuild.currentResult}.\n",
+                        body: "The Unit and Integration Tests stage finished wit h status: ${currentBuild.currentResult}.\n",
                         to: 's223391013@deakin.edu.au',
                         attachLog: true
                     )
